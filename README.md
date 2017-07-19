@@ -1,4 +1,4 @@
-# Messaging Getting Started
+# Messaging API
 ## Introduction
 The Messaging API provides the ability to send SMS messages to any mobile device.
 The first step to use the Telstra Messaging API is to create a developer account and apply for a new API key by registering your application on the portal.
@@ -23,7 +23,7 @@ curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' \
 }
 ```
 ## Sending a message
-It is possible to send a message with a simple post to https://beta-sapi.telstra.com/v2/messages/sms as demonstrated below
+It is possible to send a message with a simple post to https://sdev.telstra.com/v2/messages/sms as demonstrated below
 ```sh
 #!/bin/bash
 # Use the Messaging API to send an SMS
@@ -32,13 +32,16 @@ Dest="Destination number"
 curl -X post -H "Authorization: Bearer $AccessToken" \
   -H "Content-Type: application/json" \
   -d '{ "to":"$Dest", "body":"Test Message" }' \
-  https://beta-sapi.telstra.com/v2/messages/sms
+  https://sdev.telstra.com/v2/messages/sms
 ```
 A number of parameters can be used in this call, these are;
+```
 | Parameter | Description |
 | - | - |
 | `to` | The number that the message should be sent to. This is a mobile number in international format. eg:+61412345678 |
-| `validity` | Normally if the message cannot be delivered immediately, it will be stored and delivery will be periodically reattempted. The network will attempt to send the message for up to seven days. <br/>It is possible to select a small period than 7 days by specifying including this parameter and specifing the number of minutes that delivery should be attempted. eg: including `"validity": 60` will specify that if a message can't be delivered within the first 60 minutes them the network should stop. |
+| `validity` | 
+```
+Normally if the message cannot be delivered immediately, it will be stored and delivery will be periodically reattempted. The network will attempt to send the message for up to seven days. <br/>It is possible to select a small period than 7 days by specifying including this parameter and specifing the number of minutes that delivery should be attempted. eg: including `"validity": 60` will specify that if a message can't be delivered within the first 60 minutes them the network should stop. |
 | `scheduledDelivery` | This parameter will instruct the newtork to store the message and start attempting to deliver it after the specified number of minutes: <br/>e.g.: If `"scheduledDelivery": 120` is included, then the newtork will not attempt to start message delivery for two hours after the message has been submitted. |
 | `priority` | When messages are queued up for a number, then it is possible to set where a new message will be placed in the queue. If the priority is set to true then the new message will be placed ahead of all messages with a normal priority. <br/>If there are no messages queued for the number, then this parrameter has no effect. |
 | `notifyURL` | It is possible for the network to make a call to a URL when the message has been delivered (or has expired), different URLs can be set per message. <br/>Please refer to the Delivery notification section below. |
