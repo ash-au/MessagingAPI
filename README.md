@@ -58,11 +58,12 @@ A typical response will look like;
 ```
 The fields mean;
 | Field | Description |
-| - | - |
+| --- | --- |
 | `to` | Just a copy of the number the message is sent to. |
 | `deliveryStatus` | Gives and indication of if the message has been accepted for delivery. The description field contains information on why a message may have been rejected. |
 | `description` | Description of why a message was rejected. |
 | `messageId` | For an accepted message, ths will be a refernce that can be used to check the messages status. <br/>Please refer to the Delivery notification section below. |
+
 ## Delivery Notification
 The API provides several methods for notifying when a message has been delivered to the destination.
 When the API is added to the application there is an opportunity to specify a notification URL, when the message has been delivered the API will make a call to this URL to advise of the message status.
@@ -82,13 +83,14 @@ When a message has reached its final state, the API will send a POST to the URL 
 ```
 The fields are;
 | Field | Description |
-| - | - |
+| --- | --- |
 | `to` | The number the message was sent to |
 | `receivedTimestamp` | Time the message was sent to the API |
 | `sentTimestamp` | Time handling of the message ended |
 | `deliveryStatus` | The final state of the message |
 | `messageId` | The same reference that was returned when the original message was sent. |
 Upon receiving this call it is expected that your servers will give a 204 (No Content) response. Anything else will cause the API to reattempt the call 5 minutes later.
+
 ## Polling for Message Status
 If no notification URL has been specified, it is possible to poll for the message status, an example of this and explanation of the parameters are given below.
 ```sh
@@ -113,7 +115,7 @@ The response will be something like;
 ```
 The field meanings are;
 | Field | Description |
-| - | - |
+| --- | --- |
 | `to` | The number the message was sent to |
 | `receivedTimestamp` | Time the message was sent to the API |
 | `sentTimestamp` | Time handling of the message ended |
