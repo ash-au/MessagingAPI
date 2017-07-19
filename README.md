@@ -57,6 +57,7 @@ A typical response will look like;
 ]
 ```
 The fields mean;
+
 | Field | Description |
 | --- | --- |
 | `to` | Just a copy of the number the message is sent to. |
@@ -82,6 +83,7 @@ When a message has reached its final state, the API will send a POST to the URL 
 }
 ```
 The fields are;
+
 | Field | Description |
 | --- | --- |
 | `to` | The number the message was sent to |
@@ -114,6 +116,7 @@ The response will be something like;
 }
 ```
 The field meanings are;
+
 | Field | Description |
 | --- | --- |
 | `to` | The number the message was sent to |
