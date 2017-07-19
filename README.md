@@ -35,12 +35,12 @@ curl -X post -H "Authorization: Bearer $AccessToken" \
   https://sdev.telstra.com/v2/messages/sms
 ```
 A number of parameters can be used in this call, these are;
-```
-| Parameter | Description |
-| - | - |
-| `to` | The number that the message should be sent to. This is a mobile number in international format. eg:+61412345678 |
-| `validity` | 
-```
+
+| Parameter | Description
+| --- | ---
+| `to` | The number that the message should be sent to. This is a mobile number in international format. eg:+61412345678
+| `validity`
+
 Normally if the message cannot be delivered immediately, it will be stored and delivery will be periodically reattempted. The network will attempt to send the message for up to seven days. <br/>It is possible to select a small period than 7 days by specifying including this parameter and specifing the number of minutes that delivery should be attempted. eg: including `"validity": 60` will specify that if a message can't be delivered within the first 60 minutes them the network should stop. |
 | `scheduledDelivery` | This parameter will instruct the newtork to store the message and start attempting to deliver it after the specified number of minutes: <br/>e.g.: If `"scheduledDelivery": 120` is included, then the newtork will not attempt to start message delivery for two hours after the message has been submitted. |
 | `priority` | When messages are queued up for a number, then it is possible to set where a new message will be placed in the queue. If the priority is set to true then the new message will be placed ahead of all messages with a normal priority. <br/>If there are no messages queued for the number, then this parrameter has no effect. |
