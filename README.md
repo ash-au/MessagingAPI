@@ -47,7 +47,7 @@ To get a dedicated number, invoke the provisioning API
 ```sh
 #!/bin/bash
 curl -X POST \
-  https://slot2.apipractice.t-dev.telstra.net/v2/messages/provisioning/subscriptions/3kSXCZKknNnnunZKBR90aWfU6vOEBSnX \
+  https://slot2.apipractice.t-dev.telstra.net/v2/messages/provisioning/subscriptions \
   -H 'authorization: Bearer TOKEN' \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
@@ -64,9 +64,9 @@ Parameters for the provisioning API are;
 
 | Parameter | Description |
 | --- | --- |
-| `activeDays` | TODO |
-| `notifyURL` | TODO |
-| `callbackData` | TODO | 
+| `activeDays` | Lee to Edit |
+| `notifyURL` | Lee to Edit |
+| `callbackData` | Lee to Edit | 
 
 
 ## Sending a message
