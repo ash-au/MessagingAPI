@@ -91,6 +91,7 @@ The fields are;
 | `sentTimestamp` | Time handling of the message ended |
 | `deliveryStatus` | The final state of the message |
 | `messageId` | The same reference that was returned when the original message was sent. |
+
 Upon receiving this call it is expected that your servers will give a 204 (No Content) response. Anything else will cause the API to reattempt the call 5 minutes later.
 
 ## Polling for Message Status
