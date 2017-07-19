@@ -17,8 +17,8 @@ For this release we've inluded the following features
 | `Bounce-back response` | See if your SMS hit an unreachable or unallocated number (Australia Only) |
 | `Queuing` | Send SMS as fast as you like. Messaging API will automatically queue and deliver each message at a compliant rate. Beta version limits sending 1 message per second |
 | `Documentation` | Start building with the information you need with documentation provided here |
-| `Dev Portal` | Create and account to get access to beta API; Create companies to add more users; |
-| `Buy Plans` | Go through the process of purchasing plans to get access to full set of features and lots of APIs |
+| `Dev Portal` | Create and account to get access to beta API; Create companies to buy plans; |
+| `Buy Plans` | Go through the process of purchasing plans to get access to full set of features and lots of APIs. Shakedown will include dummy process of buying plans |
 
 ## Getting access to the API
 To get access to the API, go to MyApps page and create a new application with `Add New App` button. There is a maximum of 1 free SMS application per developer. Additional applications can be purchased from dev portal.
@@ -41,6 +41,34 @@ curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' \
   "access_token" : "1234567890123456788901234567"
 }
 ```
+
+## Provisioning a number
+To get a dedicated number, invoke the provisioning API
+```sh
+#!/bin/bash
+curl -X POST \
+  https://slot2.apipractice.t-dev.telstra.net/v2/messages/provisioning/subscriptions/3kSXCZKknNnnunZKBR90aWfU6vOEBSnX \
+  -H 'authorization: Bearer TOKEN' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -d '{
+  "activeDays":30,
+  "notifyURL":"http://example.com/callback",
+  "callbackData":
+  {
+    "anything":"that's added here will be retained for the customer",
+  }
+}'
+```
+Parameters for the provisioning API are;
+
+| Parameter | Description |
+| --- | --- |
+| `activeDays` | TODO |
+| `notifyURL` | TODO |
+| `callbackData` | TODO | 
+
+
 ## Sending a message
 It is possible to send a message with a simple post to https://sdev.telstra.com/v2/messages/sms as demonstrated below
 ```sh
