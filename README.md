@@ -149,3 +149,6 @@ The field meanings are;
 1.  Nodejs - https://github.com/mjdjk1990/SMS_API_Demo 
 2.  Python - https://github.com/SamMatt87/Telstra-SMS-API
 
+## SDKs
+https://github.com/telstra/MessagingAPI-v2
+
