@@ -9,16 +9,16 @@ For this release we've inluded the following features
 
 | Feature | Description |
 | --- | --- |
-| Messaging Sending | Sending SMS messages to national numbers |
-| Concatenation | Send messages up to 500 characters long and Telstra will automaticaly segment and reassemble them |
-| Dedicated Number | Provision a mobile number for your account to be used as from address in the API |
-| All character sets | Accetps all Unicode characters as part of of UTF-8 |
-| Delivery Status | Query the delivery status of your messages |
-| Bounce-back response | See if your SMS hit an unreachable or unallocated number (Australia Only) |
-| Queuing | Send SMS as fast as you like. Messaging API will automatically queue and deliver each message at a compliant rate. Beta version limits sending 1 message per second |
-| Documentation | Start building with the information you need with documentation provided here |
-| Dev Portal | Create and account to get access to beta API; Create companies to add more users; |
-| Buy Plans | Go through the process of purchasing plans to get access to full set of features and lots of APIs |
+| `Messaging Sending` | Sending SMS messages to national numbers |
+| `Concatenation` | Send messages up to 500 characters long and Telstra will automaticaly segment and reassemble them |
+| `Dedicated Number` | Provision a mobile number for your account to be used as from address in the API |
+| `All character sets` | Accetps all Unicode characters as part of of UTF-8 |
+| `Delivery Status` | Query the delivery status of your messages |
+| `Bounce-back response` | See if your SMS hit an unreachable or unallocated number (Australia Only) |
+| `Queuing` | Send SMS as fast as you like. Messaging API will automatically queue and deliver each message at a compliant rate. Beta version limits sending 1 message per second |
+| `Documentation` | Start building with the information you need with documentation provided here |
+| `Dev Portal` | Create and account to get access to beta API; Create companies to add more users; |
+| `Buy Plans` | Go through the process of purchasing plans to get access to full set of features and lots of APIs |
 
 ## Getting access to the API
 To get access to the API, go to MyApps page and create a new application with `Add New App` button. There is a maximum of 1 free SMS application per developer. Additional applications can be purchased from dev portal.
