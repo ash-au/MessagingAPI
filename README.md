@@ -4,6 +4,25 @@ The Messaging API provides the ability to send SMS messages to any mobile device
 The first step to use the Telstra Messaging API is to create a developer account and apply for a new API key by registering your application on the portal.
 There is a limit of 1000 free SMS messages per month and 100 per day. If you would like more volume then contact us at [t.dev@team.telstra.com](t.dev@team.telstra.com)
 
+## Beta release features
+For this release we've inluded the following features
+
+| Feature | Description |
+| --- | --- |
+| Messaging Sending | Sending SMS messages to national numbers |
+| Concatenation | Send messages up to 500 characters long and Telstra will automaticaly segment and reassemble them |
+| Dedicated Number | Provision a mobile number for your account to be used as from address in the API |
+| All character sets | Accetps all Unicode characters as part of of UTF-8 |
+| Delivery Status | Query the delivery status of your messages |
+| Bounce-back response | See if your SMS hit an unreachable or unallocated number (Australia Only) |
+| Queuing | Send SMS as fast as you like. Messaging API will automatically queue and deliver each message at a compliant rate. Beta version limits sending 1 message per second |
+| Documentation | Start building with the information you need with documentation provided here |
+| Dev Portal | Create and account to get access to beta API; Create companies to add more users; |
+| Buy Plans | Go through the process of purchasing plans to get access to full set of features and lots of APIs |
+
+## Getting access to the API
+To get access to the API, go to MyApps page and create a new application with `Add New App` button. There is a maximum of 1 free SMS application per developer. Additional applications can be purchased from dev portal.
+
 ## Authentication
 To get an OAuth 2.0 Authentication token, pass through your Consumer Key and Consumer Secret that you received when you registered for the Messages API key. The `grant_type` should be left as `client_credentials` and the scope as `NSMS`. The token will expire in one hour. Get your keys by registering at our [Developer Portal](https://sdev.telstra.com/).
 ```sh
@@ -13,7 +32,7 @@ CONSUMER_KEY="your consumer key"
 CONSUMER_SECRET="your consumer secret"
 curl -X POST -H 'Content-Type: application/x-www-form-urlencoded' \
   -d 'grant_type=client_credentials&client_id=$CONSUMER_KEY&client_secret=CONSUMER_SECRET&scope=NSMS' \
-  'https://beta-sapi.telstra.com/v1/oauth/token'
+  'https://sdev.telstra.com/v1/oauth/token'
 ```
 ### Response
 ```json
@@ -103,7 +122,7 @@ AccessToken="Consumer Access Token"
 MessageId="Previous supplied Message Id, URL encoded"
 curl -X get -H "Authorization: Bearer $AccessToken" \
   -H "Content-Type: application/json" \
-  "https://beta-sapi.telstra.com/v2/messages/sms/$MessageId"
+  "https://sdev.telstra.com/v2/messages/sms/$MessageId"
 ```
 Note, the `MessageId` that appears in the URL must be URL encoded, just copying the message id as it was supplied when submitting the message won't work.
 ### Response
@@ -129,3 +148,4 @@ The field meanings are;
 ## Sample Apps
 1.  Nodejs - https://github.com/mjdjk1990/SMS_API_Demo 
 2.  Python - https://github.com/SamMatt87/Telstra-SMS-API
+
