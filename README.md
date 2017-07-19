@@ -24,7 +24,7 @@ For this release we've inluded the following features
 To get access to the API, go to MyApps page and create a new application with `Add New App` button. There is a maximum of 1 free SMS application per developer. Additional applications can be purchased from dev portal.
 
 ## Authentication
-To get an OAuth 2.0 Authentication token, pass through your Consumer Key and Consumer Secret that you received when you registered for the Messages API key. The `grant_type` should be left as `client_credentials` and the scope as `NSMS`. The token will expire in one hour. Get your keys by registering at our [Developer Portal](https://https://slot2.apipractice.t-dev.telstra.net/).
+To get an OAuth 2.0 Authentication token, pass through your Consumer Key and Consumer Secret that you received when you registered for the Messages API key. The `grant_type` should be left as `client_credentials` and the scope as `NSMS`. The token will expire in one hour. Get your keys by registering at our [Developer Portal](https://test-apac-demo3.devportal.apigee.com/).
 ```sh
 #!/bin/bash
 # Obtain these keys from the Telstra Developer Portal
@@ -65,7 +65,7 @@ Parameters for the provisioning API are;
 | Parameter | Description |
 | --- | --- |
 | `activeDays` | Lee to Edit |
-| `notifyURL` | Lee to Edit |
+| `notifyURL` | URL to send notifications and response to |
 | `callbackData` | Lee to Edit | 
 
 
