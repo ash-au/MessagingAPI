@@ -62,12 +62,23 @@ curl -X POST \
 ```
 Parameters for the provisioning API are;
 
-| Parameter | Description |
-| --- | --- |
-| `activeDays` | Lee to Edit |
-| `notifyURL` | URL to send notifications and response to |
-| `callbackData` | Lee to Edit | 
+| Parameter |Mandatory| Description |
+| --- | --- | --- |
+| `activeDays` | N | The number of days the number will be active |
+| `notifyURL` | N | URL to send callbacks and responses to. |
+| `callbackData` | N | Preset data that will be sent to your application with every callback/response | 
+### Response
+A typical response will look like;
+```
+{
+    "destinationAddress": "+61472880996"
+}
+```
+The fields mean;
 
+| Field | Description |
+| --- | --- |
+| `destinationAddress` | The provisioned number assigned to your app. |
 
 ## Sending a message
 It is possible to send a message with a simple post to https://slot2.apipractice.t-dev.telstra.net/v2/messages/sms as demonstrated below
