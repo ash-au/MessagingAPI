@@ -64,9 +64,9 @@ Parameters for the provisioning API are;
 
 | Parameter |Mandatory| Description |
 | --- | --- | --- |
-| `activeDays` | N | The number of days the number will be active |
-| `notifyURL` | N | URL to send callbacks and responses to. |
-| `callbackData` | N | Preset data that will be sent to your application with every callback/response | 
+| `activeDays` | N | The number of days before the number will be released and quarantined. |
+| `notifyURL` | N | A callback URL that will be POSTed to whenever a new message arrives at this destination address. If this is not provided then you can make use the Get Replies API to poll for messages |
+| `callbackData` | N | A JSON that will be sent as the body in the POST to the notifyURL. This can any meaningful data relevant to your application. | 
 ### Response
 A typical response will look like;
 ```
@@ -78,9 +78,9 @@ The fields mean;
 
 | Field | Description |
 | --- | --- |
-| `destinationAddress` | The provisioned number assigned to your app. |
+| `destinationAddress` | The provisioned number assigned to your app. Your customers can send replies to this number. If the `notifyURL` is provided then the replies will be POSTed to it. |
 
-## Sending a message
+## Send message
 It is possible to send a message with a simple post to https://slot2.apipractice.t-dev.telstra.net/v2/messages/sms as demonstrated below
 ```sh
 #!/bin/bash
@@ -106,29 +106,33 @@ A number of parameters can be used in this call, these are;
 ### Response
 A typical response will look like;
 ```json
-[
-  {
-    "to": "+61418123456",
-    "deliveryStatus": "MessageWaiting",
-    "messageId": "/cccb1ce100035ebd000000000c4017eb019e0301/1261418404783"
-  }
-]
+{
+    "messages": [
+        {
+            "to": "0431588242",
+            "deliveryStatus": "MessageWaiting",
+            "messageId": "cc70158e000249b2000000000c53ef94021b0201-1261431588242"
+        }
+    ]
+}
 ```
 The fields mean;
 
 | Field | Description |
 | --- | --- |
+| `messages` | An array of messages. |
 | `to` | Just a copy of the number the message is sent to. |
 | `deliveryStatus` | Gives and indication of if the message has been accepted for delivery. The description field contains information on why a message may have been rejected. |
-| `description` | Description of why a message was rejected. |
-| `messageId` | For an accepted message, ths will be a refernce that can be used to check the messages status. <br/>Please refer to the Delivery notification section below. |
+| `messageId` | For an accepted message, ths will be a refernce that can be used to check the messages status. Please refer to the [Delivery notification](#delivery_notification) section below. |
 
 ## Delivery Notification
 The API provides several methods for notifying when a message has been delivered to the destination.
-When the API is added to the application there is an opportunity to specify a notification URL, when the message has been delivered the API will make a call to this URL to advise of the message status.
-Alternatively, a notification URL may be specified per message which will override the API setting for the single message only.
-Also if it isn't possible to set a notify URL, then the API allows a call that can be used to poll for the message status.
-Please note that the notification URLs and the polling call are exclusive. If a notification URL has been set then the polling call will not provide any useful information.
+1. When you provision a number there is an opportunity to specify a `notifyURL`, when the message has been delivered the API will make a call to this URL to advise of the message status.
+2. `notifyURL` may be specified per message which will override the API setting for the single message only.
+    1.  If `notifyURL` was provided when you created the 
+3. If you can specify a URL you can always call the `GET /sms` API get the latest replies to the message.
+ 
+*Please note that the notification URLs and the polling call are exclusive. If a notification URL has been set then the polling call will not provide any useful information.*
 ### Notification URL format
 When a message has reached its final state, the API will send a POST to the URL that has been previously specified. The call will look like this;
 ```json
@@ -190,4 +194,3 @@ The field meanings are;
 
 ## SDKs
 https://github.com/telstra/MessagingAPI-v2
-
