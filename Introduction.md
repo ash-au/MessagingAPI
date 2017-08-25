@@ -1,7 +1,7 @@
 # Messaging API
 ![Messaging API Logo](https://dev.telstra.com/sites/default/files/FroBotResize_1.png)
 ## Introduction
-Send out marketing messages to your customers or integrate with One Time Password applications. You can also create a server that triggered by specific SMS messages.
+Send and receive SMS and MMS messages using Telstra’s enterprise grade Messaging API product. Get your dedicated Australian number, and start sending and receiving messages to anywhere in the world today.
 
 Telstra's Messaing API enables sharing of text and pictures to any number across the world.
 
